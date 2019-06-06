@@ -13,7 +13,9 @@ buildscript {
 }
 
 
-apply plugin: 'java'
+// ----- Project ------------------------------------------
+
+apply plugin: 'java-library'
 apply plugin: 'idea'
 
 group 'moe.pine'
@@ -34,5 +36,18 @@ compileJava {
 dependencies {
     implementation "org.springframework:spring-webmvc:$springVersion"
     compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+}
 
+
+// ----- Build Time Tracker -------------------------------
+
+apply plugin: 'build-time-tracker'
+
+buildtimetracker {
+    reporters {
+        summary {
+            ordered true
+            barstyle 'ascii'
+        }
+    }
 }

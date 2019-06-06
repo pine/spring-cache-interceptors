@@ -26,8 +26,6 @@ public abstract class CacheHeaders {
         String build(CachePolicy cachePolicy);
     }
 
-    // -------------------------------------------------------------------
-
     static class CacheHeaderImpl implements CacheHeader {
         private final String name;
         private final CacheHeaderValueBuilder valueBuilder;
