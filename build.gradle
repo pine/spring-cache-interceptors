@@ -1,14 +1,12 @@
 buildscript {
     ext {
-        springBootVersion = '2.1.4.RELEASE'
+        springVersion = '5.1.6.RELEASE'
     }
     repositories {
         jcenter()
         maven { url 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
-        classpath 'io.spring.gradle:dependency-management-plugin:1.0.5.RELEASE'
         classpath 'gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:1.6.11'
         classpath 'net.rdrei.android.buildtimetracker:gradle-plugin:0.11.0'
     }
@@ -31,4 +29,10 @@ compileJava {
 	options.encoding = 'UTF-8'
 	options.compilerArgs << '-Xlint:unchecked'
 	options.compilerArgs << '-Xlint:deprecation'
+}
+
+dependencies {
+    implementation "org.springframework:spring-webmvc:$springVersion"
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+
 }

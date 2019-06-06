@@ -1,5 +1,7 @@
 package moe.pine.spring.cache.interceptors;
 
-public enum CacheHeader {
-    CACHE_CONTROL,
+public interface CacheHeader {
+    String getName();
+
+    String buildValue(CachePolicy cachePolicy);
 }
