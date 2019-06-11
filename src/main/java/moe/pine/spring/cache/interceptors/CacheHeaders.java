@@ -2,6 +2,7 @@ package moe.pine.spring.cache.interceptors;
 
 import org.springframework.http.HttpHeaders;
 
+import java.time.Clock;
 import java.util.ArrayList;
 
 public abstract class CacheHeaders {
@@ -23,7 +24,7 @@ public abstract class CacheHeaders {
     // -------------------------------------------------------------------
 
     interface CacheHeaderValueBuilder {
-        String build(CachePolicy cachePolicy);
+        String build(CachePolicy cachePolicy, Clock clock);
     }
 
     static class CacheHeaderImpl implements CacheHeader {
@@ -32,7 +33,8 @@ public abstract class CacheHeaders {
 
         CacheHeaderImpl(
                 final String name,
-                final CacheHeaderValueBuilder joiner) {
+                final CacheHeaderValueBuilder joiner
+        ) {
             this.name = name;
             this.valueBuilder = joiner;
         }
@@ -41,8 +43,11 @@ public abstract class CacheHeaders {
             return name;
         }
 
-        public String buildValue(CachePolicy cachePolicy) {
-            return valueBuilder.build(cachePolicy);
+        public String buildValue(
+                final CachePolicy cachePolicy,
+                final Clock clock
+        ) {
+            return valueBuilder.build(cachePolicy, clock);
         }
     }
 
@@ -50,7 +55,10 @@ public abstract class CacheHeaders {
 
     static class CacheControlValueBuilder implements CacheHeaderValueBuilder {
         @Override
-        public String build(CachePolicy cachePolicy) {
+        public String build(
+                final CachePolicy cachePolicy,
+                final Clock clock
+        ) {
             final ArrayList<String> directives = new ArrayList<>();
             if (cachePolicy.isPublic()) {
                 directives.add("public");
@@ -78,7 +86,10 @@ public abstract class CacheHeaders {
 
     static class PragmaValueBuilder implements CacheHeaderValueBuilder {
         @Override
-        public String build(CachePolicy cachePolicy) {
+        public String build(
+                final CachePolicy cachePolicy,
+                final Clock clock
+        ) {
             if (cachePolicy.isNoCache()) {
                 return "no-cache";
             }
@@ -90,7 +101,10 @@ public abstract class CacheHeaders {
 
     static class ExpiresValueBuilder implements CacheHeaderValueBuilder {
         @Override
-        public String build(CachePolicy cachePolicy) {
+        public String build(
+                final CachePolicy cachePolicy,
+                final Clock clock
+        ) {
             return null;
         }
     }

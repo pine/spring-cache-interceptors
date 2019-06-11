@@ -36,6 +36,8 @@ compileJava {
 dependencies {
     implementation "org.springframework:spring-webmvc:$springVersion"
     compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+
+    testImplementation 'junit:junit:4.12'
 }
 
 

@@ -59,7 +59,7 @@ public class CacheInterceptor extends HandlerInterceptorAdapter {
                 continue;
             }
 
-            final String value = cacheHeader.buildValue(cachePolicy);
+            final String value = cacheHeader.buildValue(cachePolicy, clock);
             if (StringUtils.isEmpty(value)) {
                 continue;
             }
