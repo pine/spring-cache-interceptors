@@ -4,6 +4,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.util.StringUtils;
 
 import java.time.Clock;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -106,11 +108,19 @@ public abstract class CacheHeaders {
     // -------------------------------------------------------------------
 
     static class ExpiresValueBuilder implements CacheHeaderValueBuilder {
+        static final ZoneId ZONE_ID = ZoneId.of("UTC");
+
         @Override
         public String build(
                 final CachePolicy cachePolicy,
                 final Clock clock
         ) {
+            if (cachePolicy.getMaxAge() != null) {
+                final ZonedDateTime expires =
+                        ZonedDateTime.now(clock)
+                                .withZoneSameLocal(ZONE_ID)
+                                .plusSeconds(cachePolicy.getMaxAge());
+            }
             return null;
         }
     }
