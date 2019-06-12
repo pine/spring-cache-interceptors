@@ -66,4 +66,16 @@ public class CacheInterceptor extends HandlerInterceptorAdapter {
 
         return true;
     }
+
+    public CachePolicy getCachePolicy() {
+        return cachePolicy;
+    }
+
+    protected List<CacheHeader> getCacheHeaders() {
+        return cacheHeaders;
+    }
+
+    public Clock getClock() {
+        return clock;
+    }
 }
