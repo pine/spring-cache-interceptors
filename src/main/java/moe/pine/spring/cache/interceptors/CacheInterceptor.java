@@ -67,7 +67,7 @@ public class CacheInterceptor extends HandlerInterceptorAdapter {
         return true;
     }
 
-    public CachePolicy getCachePolicy() {
+    protected CachePolicy getCachePolicy() {
         return cachePolicy;
     }
 
@@ -75,7 +75,7 @@ public class CacheInterceptor extends HandlerInterceptorAdapter {
         return cacheHeaders;
     }
 
-    public Clock getClock() {
+    protected Clock getClock() {
         return clock;
     }
 }
