@@ -8,17 +8,17 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public abstract class CacheHeaders {
-    public static CacheHeader CACHE_CONTROL =
+    public static final CacheHeader CACHE_CONTROL =
             new CacheHeaderImpl(
                     HttpHeaders.CACHE_CONTROL,
                     new CacheControlValueBuilder());
 
-    public static CacheHeader PRAGMA =
+    public static final CacheHeader PRAGMA =
             new CacheHeaderImpl(
                     HttpHeaders.PRAGMA,
                     new PragmaValueBuilder());
 
-    public static CacheHeader EXPIRES =
+    public static final CacheHeader EXPIRES =
             new CacheHeaderImpl(
                     HttpHeaders.EXPIRES,
                     new ExpiresValueBuilder());

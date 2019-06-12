@@ -45,6 +45,40 @@ dependencies {
 }
 
 
+// ----- JaCoCo ---------------------------------------
+
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = '0.8.3'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+
+// ----- SpotBugs -------------------------------------
+
+apply plugin: 'com.github.spotbugs'
+
+spotbugs {
+    toolVersion = '3.1.8'
+    excludeFilter = file("${project.rootDir}/findbugs-exclude.xml")
+    spotbugsTest.enabled = false
+}
+
+tasks.withType(com.github.spotbugs.SpotBugsTask) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+
 // ----- Build Time Tracker -------------------------------
 
 apply plugin: 'build-time-tracker'
