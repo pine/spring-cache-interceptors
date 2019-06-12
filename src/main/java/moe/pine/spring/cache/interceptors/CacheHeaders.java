@@ -1,9 +1,11 @@
 package moe.pine.spring.cache.interceptors;
 
 import org.springframework.http.HttpHeaders;
+import org.springframework.util.StringUtils;
 
 import java.time.Clock;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public abstract class CacheHeaders {
     public static CacheHeader CACHE_CONTROL =
@@ -43,11 +45,15 @@ public abstract class CacheHeaders {
             return name;
         }
 
-        public String buildValue(
+        public Optional<String> buildValue(
                 final CachePolicy cachePolicy,
                 final Clock clock
         ) {
-            return valueBuilder.build(cachePolicy, clock);
+            final String value = valueBuilder.build(cachePolicy, clock);
+            if (StringUtils.isEmpty(value)) {
+                return Optional.empty();
+            }
+            return Optional.of(value);
         }
     }
 

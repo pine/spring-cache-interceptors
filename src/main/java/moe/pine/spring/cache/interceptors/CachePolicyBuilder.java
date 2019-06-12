@@ -18,7 +18,18 @@ public class CachePolicyBuilder {
         return this;
     }
 
+    public CachePolicyBuilder maxAge(long maxAge) {
+        cachePolicy.setMaxAge(maxAge);
+        return this;
+    }
+
     public CachePolicyBuilder noStore() {
+        cachePolicy.setNoStore(true);
+        return this;
+    }
+
+    public CachePolicyBuilder mustRevalidate() {
+        cachePolicy.setMustRevalidate(true);
         return this;
     }
 

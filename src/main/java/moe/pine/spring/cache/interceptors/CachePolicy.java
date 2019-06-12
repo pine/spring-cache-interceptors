@@ -55,5 +55,4 @@ public class CachePolicy {
     public void setMustRevalidate(boolean mustRevalidate) {
         this.mustRevalidate = mustRevalidate;
     }
-
 }

@@ -1,6 +1,8 @@
 buildscript {
     ext {
+        servletVersion = '4.0.1'
         springVersion = '5.1.6.RELEASE'
+        mockitoVersion = '2.24.5'
     }
     repositories {
         jcenter()
@@ -24,20 +26,22 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
-	jcenter()
+    jcenter()
 }
 
 compileJava {
-	options.encoding = 'UTF-8'
-	options.compilerArgs << '-Xlint:unchecked'
-	options.compilerArgs << '-Xlint:deprecation'
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-Xlint:unchecked'
+    options.compilerArgs << '-Xlint:deprecation'
 }
 
 dependencies {
     implementation "org.springframework:spring-webmvc:$springVersion"
-    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+    compileOnly "javax.servlet:javax.servlet-api:$servletVersion"
 
     testImplementation 'junit:junit:4.12'
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "javax.servlet:javax.servlet-api:$servletVersion"
 }
 
 

@@ -9,6 +9,7 @@ import java.time.Clock;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class CacheInterceptor extends HandlerInterceptorAdapter {
     public static final List<CacheHeader> DEFAULT_HEADERS =
@@ -59,12 +60,8 @@ public class CacheInterceptor extends HandlerInterceptorAdapter {
                 continue;
             }
 
-            final String value = cacheHeader.buildValue(cachePolicy, clock);
-            if (StringUtils.isEmpty(value)) {
-                continue;
-            }
-
-            response.addHeader(name, value);
+            final Optional<String> valueOpt = cacheHeader.buildValue(cachePolicy, clock);
+            valueOpt.ifPresent(value -> response.addHeader(name, value));
         }
 
         return true;
