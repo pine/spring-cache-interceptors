@@ -78,14 +78,46 @@ public abstract class CacheHeaders {
             if (cachePolicy.isNoCache()) {
                 directives.add("no-cache");
             }
+            if (cachePolicy.isOnlyIfCached()) {
+                directives.add("only-if-cached");
+            }
             if (cachePolicy.getMaxAge() != null) {
                 directives.add("max-age=" + cachePolicy.getMaxAge());
+            }
+            if (cachePolicy.getSMaxAge() != null) {
+                directives.add("s-maxage=" + cachePolicy.getSMaxAge());
+            }
+            if (cachePolicy.getMaxStale() != null) {
+                final Long seconds = cachePolicy.getMaxStale().getSeconds();
+                if (seconds != null) {
+                    directives.add("max-stale=" + seconds);
+                } else {
+                    directives.add("max-stale");
+                }
+            }
+            if (cachePolicy.getMinFresh() != null) {
+                directives.add("min-fresh=" + cachePolicy.getMinFresh());
+            }
+            if (cachePolicy.getStaleWhileRevalidate() != null) {
+                directives.add("stale-while-revalidate=" + cachePolicy.getStaleWhileRevalidate());
+            }
+            if (cachePolicy.getStaleIfError() != null) {
+                directives.add("stale-if-error=" + cachePolicy.getStaleIfError());
+            }
+            if (cachePolicy.isMustRevalidate()) {
+                directives.add("must-revalidate");
+            }
+            if (cachePolicy.isProxyRevalidate()) {
+                directives.add("proxy-revalidate");
+            }
+            if (cachePolicy.isImmutable()) {
+                directives.add("immutable");
             }
             if (cachePolicy.isNoStore()) {
                 directives.add("no-store");
             }
-            if (cachePolicy.isMustRevalidate()) {
-                directives.add("must-revalidate");
+            if (cachePolicy.isNoTransform()) {
+                directives.add("no-transform");
             }
             return String.join(", ", directives);
         }

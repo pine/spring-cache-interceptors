@@ -32,12 +32,20 @@ public class CacheHeadersTest {
                 .public_()
                 .private_()
                 .noCache()
+                .onlyIfCached()
                 .maxAge(12345L)
-                .noStore()
+                .sMaxAge(23456L)
+                .maxStale(CachePolicy.MaxStale.ENABLED)
+                .minFresh(34567L)
+                .staleIfError(99999L)
                 .mustRevalidate()
+                .proxyRevalidate()
+                .immutable()
+                .noStore()
+                .noTransform()
                 .build();
         assertEquals(
-                Optional.of("public, private, no-cache, max-age=12345, no-store, must-revalidate"),
+                Optional.of("public, private, no-cache, only-if-cached, max-age=12345, s-maxage=23456, max-stale, min-fresh=34567, stale-if-error=99999, must-revalidate, proxy-revalidate, immutable, no-store, no-transform"),
                 CacheHeaders.CACHE_CONTROL.buildValue(cachePolicy, CLOCK));
     }
 
