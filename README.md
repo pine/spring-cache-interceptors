@@ -1,6 +1,11 @@
 # spring-cache-interceptors
 :leaves: Cache interceptors for SpringFramework
 
+![](images/resized.jpg)<br>
+<sup><sup>&copy; Pongnathee Kluaythong/123RF.COM</sup></sup>
+<br>
+<br>
+
 ## Getting started
 
 ```gradle
