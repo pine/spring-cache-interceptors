@@ -26,18 +26,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
-    private static final CachePolicy CACHE_POLICY = new CachePolicyBuilder()
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        final CachePolicy cachePolicy = new CachePolicyBuilder()
             .public_()
             .maxAge(3600L)
             .build();
+        final CacheInterceptor cacheInterceptor = new CacheInterceptor(cachePolicy);
 
-    private static final CacheInterceptor CACHE_INTERCEPTOR =
-            new CacheInterceptor(cachePolicy);
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
         registry
-            .addInterceptor(CACHE_INTERCEPTOR)
+            .addInterceptor(cacheInterceptor)
             .addPathPatterns("/**");
     }
 }
