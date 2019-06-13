@@ -6,6 +6,7 @@ import java.time.Clock;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 
@@ -55,5 +56,22 @@ public class CacheHeadersTest {
         assertEquals(
                 Optional.of("no-cache"),
                 CacheHeaders.PRAGMA.buildValue(cachePolicy, CLOCK));
+    }
+
+    @Test
+    public void expiresTest() {
+        assertEquals("Expires", CacheHeaders.EXPIRES.getName());
+
+        final CachePolicy emptyCachePolicy = new CachePolicyBuilder().build();
+        assertEquals(
+                Optional.empty(),
+                CacheHeaders.EXPIRES.buildValue(emptyCachePolicy, CLOCK));
+
+        final CachePolicy cachePolicy = new CachePolicyBuilder()
+                .maxAge(TimeUnit.DAYS.toSeconds(1))
+                .build();
+        assertEquals(
+                Optional.of("Thu, 13 Jun 2019 03:00:00 GMT"),
+                CacheHeaders.EXPIRES.buildValue(cachePolicy, CLOCK));
     }
 }
