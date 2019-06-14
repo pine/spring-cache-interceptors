@@ -1,5 +1,6 @@
 # spring-cache-interceptors
 [![Build Status](https://travis-ci.com/pine/spring-cache-interceptors.svg?branch=master)](https://travis-ci.com/pine/spring-cache-interceptors)
+[![codecov](https://codecov.io/gh/pine/spring-cache-interceptors/branch/master/graph/badge.svg)](https://codecov.io/gh/pine/spring-cache-interceptors)
 
 :leaves: Cache interceptors for SpringFramework
 
