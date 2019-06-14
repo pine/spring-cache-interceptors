@@ -9,6 +9,10 @@
 <br>
 <br>
 
+## Requirements
+
+- Java 8 or later
+
 ## Getting started
 
 ```gradle
