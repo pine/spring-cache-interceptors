@@ -23,10 +23,6 @@ public class CacheHeadersTest {
     public void cacheControlTest() {
         assertEquals("Cache-Control", CacheHeaders.CACHE_CONTROL.getName());
 
-        final CachePolicy emptyCachePolicy = new CachePolicyBuilder().build();
-        assertEquals(
-                Optional.empty(),
-                CacheHeaders.CACHE_CONTROL.buildValue(emptyCachePolicy, CLOCK));
 
         final CachePolicy cachePolicy = new CachePolicyBuilder()
                 .public_()
@@ -51,13 +47,26 @@ public class CacheHeadersTest {
     }
 
     @Test
-    public void pragmaTest() {
-        assertEquals("Pragma", CacheHeaders.PRAGMA.getName());
-
-        final CachePolicy emptyCachePolicy = new CachePolicyBuilder().build();
+    public void cacheControlTest_empty() {
+        final CachePolicy cachePolicy = new CachePolicyBuilder().build();
         assertEquals(
                 Optional.empty(),
-                CacheHeaders.PRAGMA.buildValue(emptyCachePolicy, CLOCK));
+                CacheHeaders.CACHE_CONTROL.buildValue(cachePolicy, CLOCK));
+    }
+
+    @Test
+    public void cacheControlTest_maxStale() {
+        final CachePolicy cachePolicy = new CachePolicyBuilder()
+                .maxStale(CachePolicy.MaxStale.of(12345L))
+                .build();
+        assertEquals(
+                Optional.of("max-stale=12345"),
+                CacheHeaders.CACHE_CONTROL.buildValue(cachePolicy, CLOCK));
+    }
+
+    @Test
+    public void pragmaTest() {
+        assertEquals("Pragma", CacheHeaders.PRAGMA.getName());
 
         final CachePolicy cachePolicy = new CachePolicyBuilder()
                 .noCache()
@@ -68,19 +77,30 @@ public class CacheHeadersTest {
     }
 
     @Test
-    public void expiresTest() {
-        assertEquals("Expires", CacheHeaders.EXPIRES.getName());
-
-        final CachePolicy emptyCachePolicy = new CachePolicyBuilder().build();
+    public void pragmaTest_empty() {
+        final CachePolicy cachePolicy = new CachePolicyBuilder().build();
         assertEquals(
                 Optional.empty(),
-                CacheHeaders.EXPIRES.buildValue(emptyCachePolicy, CLOCK));
+                CacheHeaders.PRAGMA.buildValue(cachePolicy, CLOCK));
+    }
+
+    @Test
+    public void expiresTest() {
+        assertEquals("Expires", CacheHeaders.EXPIRES.getName());
 
         final CachePolicy cachePolicy = new CachePolicyBuilder()
                 .maxAge(TimeUnit.DAYS.toSeconds(1))
                 .build();
         assertEquals(
                 Optional.of("Thu, 13 Jun 2019 03:00:00 GMT"),
+                CacheHeaders.EXPIRES.buildValue(cachePolicy, CLOCK));
+    }
+
+    @Test
+    public void expiresTest_empty() {
+        final CachePolicy cachePolicy = new CachePolicyBuilder().build();
+        assertEquals(
+                Optional.empty(),
                 CacheHeaders.EXPIRES.buildValue(cachePolicy, CLOCK));
     }
 }
