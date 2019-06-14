@@ -23,7 +23,6 @@ public class CacheHeadersTest {
     public void cacheControlTest() {
         assertEquals("Cache-Control", CacheHeaders.CACHE_CONTROL.getName());
 
-
         final CachePolicy cachePolicy = new CachePolicyBuilder()
                 .public_()
                 .private_()
