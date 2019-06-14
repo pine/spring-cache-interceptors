@@ -43,6 +43,11 @@ public class CachePolicyBuilder {
         return this;
     }
 
+    public CachePolicyBuilder staleWhileRevalidate(long seconds) {
+        cachePolicy.setStaleWhileRevalidate(seconds);
+        return this;
+    }
+
     public CachePolicyBuilder staleIfError(long seconds) {
         cachePolicy.setStaleIfError(seconds);
         return this;

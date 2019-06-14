@@ -37,6 +37,7 @@ public class CacheHeadersTest {
                 .sMaxAge(23456L)
                 .maxStale(CachePolicy.MaxStale.ENABLED)
                 .minFresh(34567L)
+                .staleWhileRevalidate(88888L)
                 .staleIfError(99999L)
                 .mustRevalidate()
                 .proxyRevalidate()
@@ -45,7 +46,7 @@ public class CacheHeadersTest {
                 .noTransform()
                 .build();
         assertEquals(
-                Optional.of("public, private, no-cache, only-if-cached, max-age=12345, s-maxage=23456, max-stale, min-fresh=34567, stale-if-error=99999, must-revalidate, proxy-revalidate, immutable, no-store, no-transform"),
+                Optional.of("public, private, no-cache, only-if-cached, max-age=12345, s-maxage=23456, max-stale, min-fresh=34567, stale-while-revalidate=88888, stale-if-error=99999, must-revalidate, proxy-revalidate, immutable, no-store, no-transform"),
                 CacheHeaders.CACHE_CONTROL.buildValue(cachePolicy, CLOCK));
     }
 

@@ -38,10 +38,10 @@ public abstract class CacheHeaders {
 
         CacheHeaderImpl(
                 final String name,
-                final CacheHeaderValueBuilder joiner
+                final CacheHeaderValueBuilder valueBuilder
         ) {
             this.name = name;
-            this.valueBuilder = joiner;
+            this.valueBuilder = valueBuilder;
         }
 
         public String getName() {
