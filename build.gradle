@@ -1,8 +1,8 @@
 buildscript {
     ext {
         // Bintray
-        version = '0.1.0'
         group = 'moe.pine'
+        version = '0.1.0'
         description = 'Cache interceptors for SpringFramework'
         siteUrl = 'https://github.com/pine/spring-cache-interceptors'
         gitUrl = 'https://github.com/pine/spring-cache-interceptors.git'
@@ -32,6 +32,7 @@ apply plugin: 'java-library'
 apply plugin: 'idea'
 
 group rootProject.ext.group
+version rootProject.ext.version
 description rootProject.ext.description
 
 sourceCompatibility = JavaVersion.VERSION_1_8
