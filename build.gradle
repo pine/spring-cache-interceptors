@@ -1,5 +1,14 @@
 buildscript {
     ext {
+        // Bintray
+        version = '0.1.0'
+        group = 'moe.pine'
+        description = 'Cache interceptors for SpringFramework'
+        siteUrl = 'https://github.com/pine/spring-cache-interceptors'
+        gitUrl = 'https://github.com/pine/spring-cache-interceptors.git'
+        userOrg = 'pinemz'
+
+        // Dependencies
         servletVersion = '4.0.1'
         springVersion = '5.1.6.RELEASE'
         mockitoVersion = '2.24.5'
@@ -9,6 +18,8 @@ buildscript {
         maven { url 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
         classpath 'gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:1.6.11'
         classpath 'net.rdrei.android.buildtimetracker:gradle-plugin:0.11.0'
     }
@@ -20,7 +31,8 @@ buildscript {
 apply plugin: 'java-library'
 apply plugin: 'idea'
 
-group 'moe.pine'
+group rootProject.ext.group
+description rootProject.ext.description
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -91,3 +103,9 @@ buildtimetracker {
         }
     }
 }
+
+
+// ----- Bintray ------------------------------------------
+
+apply from: "${rootProject.projectDir}/gradle/bintray.gradle"
+
