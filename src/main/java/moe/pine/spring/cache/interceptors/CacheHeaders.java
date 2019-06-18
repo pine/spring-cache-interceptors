@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public abstract class CacheHeaders {
+public final class CacheHeaders {
     public static final CacheHeader CACHE_CONTROL =
             new CacheHeaderImpl(
                     HttpHeaders.CACHE_CONTROL,
@@ -25,6 +25,9 @@ public abstract class CacheHeaders {
             new CacheHeaderImpl(
                     HttpHeaders.EXPIRES,
                     new ExpiresValueBuilder());
+
+    private CacheHeaders() {
+    }
 
     // -------------------------------------------------------------------
 
