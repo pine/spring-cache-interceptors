@@ -14,6 +14,7 @@
 - Java 8 or later
 
 ## Getting started
+The library is published to jcenter.
 
 ```gradle
 repositories {
