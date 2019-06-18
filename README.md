@@ -26,6 +26,7 @@ depepdencies {
 ```
 
 ## Usage
+You can create a new interceptor with Spring Framework as following.
 
 ```java
 import moe.pine.spring.cache.interceptors.CacheInterceptor;
