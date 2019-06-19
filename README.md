@@ -13,6 +13,7 @@
 ## Requirements
 
 - Java 8 or later
+- Spring Framework 5.x
 
 ## Getting started
 The library is published to jcenter.
