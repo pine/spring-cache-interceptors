@@ -2,7 +2,7 @@ buildscript {
     ext {
         // Bintray
         group = 'moe.pine'
-        version = '0.1.0'
+        version = '0.1.1'
         description = 'Cache interceptors for SpringFramework'
         siteUrl = 'https://github.com/pine/spring-cache-interceptors'
         gitUrl = 'https://github.com/pine/spring-cache-interceptors.git'
