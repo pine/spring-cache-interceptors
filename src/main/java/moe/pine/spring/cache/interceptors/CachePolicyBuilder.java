@@ -1,5 +1,7 @@
 package moe.pine.spring.cache.interceptors;
 
+import org.springframework.lang.Nullable;
+
 public class CachePolicyBuilder {
     private final CachePolicy cachePolicy = new CachePolicy();
 
@@ -33,7 +35,7 @@ public class CachePolicyBuilder {
         return this;
     }
 
-    public CachePolicyBuilder maxStale(CachePolicy.MaxStale maxStale) {
+    public CachePolicyBuilder maxStale(@Nullable CachePolicy.MaxStale maxStale) {
         cachePolicy.setMaxStale(maxStale);
         return this;
     }

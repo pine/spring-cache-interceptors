@@ -1,6 +1,7 @@
 package moe.pine.spring.cache.interceptors;
 
 import org.springframework.http.HttpHeaders;
+import org.springframework.lang.Nullable;
 import org.springframework.util.StringUtils;
 
 import java.time.Clock;
@@ -32,6 +33,7 @@ public final class CacheHeaders {
     // -------------------------------------------------------------------
 
     interface CacheHeaderValueBuilder {
+        @Nullable
         String build(CachePolicy cachePolicy, Clock clock);
     }
 
@@ -90,8 +92,9 @@ public final class CacheHeaders {
             if (cachePolicy.getSMaxAge() != null) {
                 directives.add("s-maxage=" + cachePolicy.getSMaxAge());
             }
-            if (cachePolicy.getMaxStale() != null) {
-                final Long seconds = cachePolicy.getMaxStale().getSeconds();
+            final CachePolicy.MaxStale maxStale = cachePolicy.getMaxStale();
+            if (maxStale != null) {
+                final Long seconds = maxStale.getSeconds();
                 if (seconds != null) {
                     directives.add("max-stale=" + seconds);
                 } else {
@@ -149,10 +152,11 @@ public final class CacheHeaders {
                 final CachePolicy cachePolicy,
                 final Clock clock
         ) {
-            if (cachePolicy.getMaxAge() != null) {
+            final Long maxAge = cachePolicy.getMaxAge();
+            if (maxAge != null) {
                 final OffsetDateTime dt =
                         OffsetDateTime.now(clock)
-                                .plusSeconds(cachePolicy.getMaxAge())
+                                .plusSeconds(maxAge)
                                 .withOffsetSameInstant(ZoneOffset.UTC);
                 return dt.format(DateTimeFormatter.RFC_1123_DATE_TIME);
             }
