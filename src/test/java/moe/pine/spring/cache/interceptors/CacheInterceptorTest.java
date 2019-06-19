@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.time.Clock;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -48,10 +50,37 @@ public class CacheInterceptorTest {
     }
 
     @Test
-    public void constructorTest() {
+    public void constructorTest_1() {
         final CacheInterceptor cacheInterceptor = new CacheInterceptor(cachePolicy);
         assertSame(cachePolicy, cacheInterceptor.getCachePolicy());
         assertSame(CacheInterceptor.DEFAULT_HEADERS, cacheInterceptor.getCacheHeaders());
+        assertNotNull(cacheInterceptor.getClock());
+    }
+
+    @Test
+    public void constructorTest_2() {
+        final List<CacheHeader> headers =
+                Arrays.asList(
+                        CacheHeaders.CACHE_CONTROL,
+                        CacheHeaders.PRAGMA,
+                        CacheHeaders.EXPIRES);
+        final CacheInterceptor cacheInterceptor = new CacheInterceptor(cachePolicy, headers);
+        assertSame(cachePolicy, cacheInterceptor.getCachePolicy());
+        assertSame(headers, cacheInterceptor.getCacheHeaders());
+        assertNotNull(cacheInterceptor.getClock());
+    }
+
+    @Test
+    public void constructorTest_3() {
+        final List<CacheHeader> headers =
+                Arrays.asList(
+                        CacheHeaders.CACHE_CONTROL,
+                        CacheHeaders.PRAGMA,
+                        CacheHeaders.EXPIRES);
+        final CacheInterceptor cacheInterceptor = new CacheInterceptor(cachePolicy, headers, clock);
+        assertSame(cachePolicy, cacheInterceptor.getCachePolicy());
+        assertSame(headers, cacheInterceptor.getCacheHeaders());
+        assertSame(clock, cacheInterceptor.getClock());
     }
 
     @Test
