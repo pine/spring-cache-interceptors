@@ -1,1 +1,1 @@
-*.java linguist-language=Java
+cache/interceptors/* linguist-vendored=false
