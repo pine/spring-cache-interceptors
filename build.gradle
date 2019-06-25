@@ -4,7 +4,8 @@ buildscript {
         group = 'moe.pine'
         version = '0.1.1'
         description = 'Cache interceptors for SpringFramework'
-        siteUrl = 'https://github.com/pine/spring-cache-interceptors'
+        websiteUrl = 'https://github.com/pine/spring-cache-interceptors'
+        issueTrackerUrl = 'https://github.com/pine/spring-cache-interceptors/issues'
         gitUrl = 'https://github.com/pine/spring-cache-interceptors.git'
         userOrg = 'pinemz'
 
