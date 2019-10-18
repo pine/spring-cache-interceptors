@@ -13,7 +13,13 @@
 ## Requirements
 
 - Java 8 or later
-- Spring Framework 5.x
+- Spring Framework
+
+### Supported Spring Framework versions
+
+|Spring Framework versions|Spring Boot versions|The library version|
+|-------------------------|--------------------|-------------------|
+|5.1, 5.2                 |2.1, 2.2            |0.1.2              |
 
 ## Getting started
 The library is published to jcenter.
