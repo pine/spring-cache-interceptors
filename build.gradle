@@ -11,7 +11,7 @@ buildscript {
 
         // Dependencies
         servletVersion = '4.0.1'
-        springVersion = '5.1.6.RELEASE'
+        springVersion = '5.2.0.RELEASE'
         mockitoVersion = '2.24.5'
     }
     repositories {
