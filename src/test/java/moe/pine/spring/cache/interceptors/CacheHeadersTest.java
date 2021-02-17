@@ -1,6 +1,7 @@
 package moe.pine.spring.cache.interceptors;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 import java.time.Clock;
 import java.time.ZoneId;
@@ -8,7 +9,8 @@ import java.time.ZonedDateTime;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class CacheHeadersTest {
     private static final ZoneId ZONE_ID = ZoneId.of("Asia/Tokyo");

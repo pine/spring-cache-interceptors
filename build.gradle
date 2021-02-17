@@ -8,9 +8,10 @@ buildscript {
         gitUrl = 'https://github.com/pine/spring-cache-interceptors.git'
 
         // Dependencies
+        junitVersion = '5.7.1'
         servletVersion = '4.0.1'
         springVersion = '5.2.0.RELEASE'
-        mockitoVersion = '2.24.5'
+        mockitoVersion = '3.7.7'
     }
     repositories {
         jcenter()
@@ -48,15 +49,27 @@ compileJava {
 
 dependencies {
     api "org.springframework:spring-webmvc:$springVersion"
-    compileOnly "javax.servlet:javax.servlet-api:$servletVersion"
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    // Java Servlet
+    compileOnly "javax.servlet:javax.servlet-api:$servletVersion"
     testImplementation "javax.servlet:javax.servlet-api:$servletVersion"
+
+    // JUnit
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+
+    // Mockito
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "org.mockito:mockito-inline:$mockitoVersion"
+    testImplementation "org.mockito:mockito-junit-jupiter:$mockitoVersion"
+}
+
+test {
+    useJUnitPlatform()
 }
 
 
-// ----- JaCoCo ---------------------------------------
+// ----- JaCoCo -------------------------------------------
 
 apply plugin: 'jacoco'
 
@@ -72,7 +85,7 @@ jacocoTestReport {
 }
 
 
-// ----- SpotBugs -------------------------------------
+// ----- SpotBugs -----------------------------------------
 
 apply plugin: 'com.github.spotbugs'
 
