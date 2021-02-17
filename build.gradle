@@ -1,13 +1,11 @@
 buildscript {
     ext {
-        // Bintray
+        // Maven Central
         group = 'moe.pine'
         version = '0.1.2'
         description = 'Cache interceptors for SpringFramework'
         websiteUrl = 'https://github.com/pine/spring-cache-interceptors'
-        issueTrackerUrl = 'https://github.com/pine/spring-cache-interceptors/issues'
         gitUrl = 'https://github.com/pine/spring-cache-interceptors.git'
-        userOrg = 'pinemz'
 
         // Dependencies
         servletVersion = '4.0.1'
@@ -106,7 +104,7 @@ buildtimetracker {
 }
 
 
-// ----- Bintray ------------------------------------------
+// ----- Maven Central ------------------------------------
 
-apply from: "${rootProject.projectDir}/gradle/bintray.gradle"
+apply from: "${rootProject.projectDir}/gradle/sonatype.gradle"
 

@@ -1,0 +1,50 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = project.name
+            from components.java
+            pom {
+                name = project.name
+                description = project.description
+                url = rootProject.ext.websiteUrl
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'http://opensource.org/licenses/mit-license.php'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'pine'
+                        name = 'Pine Mizune'
+                        email = 'pinemz@gmail.com'
+                    }
+                }
+                scm {
+                    connection = rootProject.ext.gitUrl
+                    developerConnection = rootProject.ext.gitUrl
+                    url = rootProject.ext.websiteUrl
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            def releasesRepoUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2'
+            def snapshotsRepoUrl = 'https://oss.sonatype.org/content/repositories/snapshots'
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            credentials {
+                username = project.hasProperty('sonatypeUsername') ? project.property('sonatypeUsername') : ''
+                password = project.hasProperty('sonatypePassword') ? project.property('sonatypePassword') : ''
+            }
+        }
+    }
+}
+
+signing {
+    useGpgCmd()
+    sign publishing.publications.mavenJava
+}
