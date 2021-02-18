@@ -26,7 +26,7 @@ The library is published to jcenter.
 
 ```gradle
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 depepdencies {
