@@ -19,7 +19,7 @@
 
 |Spring Framework versions|Spring Boot versions|The library version|
 |-------------------------|--------------------|-------------------|
-|5.x.                     |2.x.                |0.1.x              |
+|5.2                      |2.2, 2.3.           |0.1.3              |
 
 ## Getting started
 The library is published to jcenter.
