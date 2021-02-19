@@ -14,7 +14,7 @@ buildscript {
         mockitoVersion = '3.7.7'
     }
     repositories {
-        jcenter()
+        mavenCentral()
         maven { url 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
@@ -38,7 +38,7 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 compileJava {
