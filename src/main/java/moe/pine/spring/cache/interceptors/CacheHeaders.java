@@ -58,7 +58,7 @@ public final class CacheHeaders {
                 final Clock clock
         ) {
             final String value = valueBuilder.build(cachePolicy, clock);
-            if (StringUtils.isEmpty(value)) {
+            if (!StringUtils.hasLength(value)) {
                 return Optional.empty();
             }
             return Optional.of(value);

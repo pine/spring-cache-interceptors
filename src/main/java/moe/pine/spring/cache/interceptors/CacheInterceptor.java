@@ -1,7 +1,7 @@
 package moe.pine.spring.cache.interceptors;
 
 import org.springframework.util.StringUtils;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public class CacheInterceptor extends HandlerInterceptorAdapter {
+public class CacheInterceptor implements HandlerInterceptor {
     public static final List<CacheHeader> DEFAULT_HEADERS =
             Collections.unmodifiableList(
                     Arrays.asList(
@@ -56,7 +56,7 @@ public class CacheInterceptor extends HandlerInterceptorAdapter {
     ) {
         for (final CacheHeader cacheHeader : cacheHeaders) {
             final String name = cacheHeader.getName();
-            if (StringUtils.isEmpty(name)) {
+            if (!StringUtils.hasLength(name)) {
                 continue;
             }
 
