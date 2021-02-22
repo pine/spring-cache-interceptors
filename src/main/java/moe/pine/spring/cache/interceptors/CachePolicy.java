@@ -178,5 +178,12 @@ public class CachePolicy {
         public Long getSeconds() {
             return seconds;
         }
+
+        @Override
+        public String toString() {
+            return "MaxStale{" +
+                    "seconds=" + seconds +
+                    '}';
+        }
     }
 }
