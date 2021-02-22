@@ -60,7 +60,10 @@ repositories {
 }
 
 dependencies {
-    api "org.springframework:spring-webmvc:$springVersion"
+    // Spring Framework
+    compileOnly "org.springframework:spring-webmvc:$springVersion"
+    testImplementation "org.springframework:spring-webmvc:$springVersion"
+    compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
 
     // Java Servlet
     compileOnly "javax.servlet:javax.servlet-api:$servletVersion"
