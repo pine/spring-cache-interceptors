@@ -32,6 +32,7 @@ public final class CacheHeaders {
 
     // -------------------------------------------------------------------
 
+    @FunctionalInterface
     interface CacheHeaderValueBuilder {
         @Nullable
         String build(CachePolicy cachePolicy, Clock clock);
