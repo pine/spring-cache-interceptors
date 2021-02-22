@@ -6,6 +6,7 @@ buildscript {
         description = 'Cache interceptors for SpringFramework'
         websiteUrl = 'https://github.com/pine/spring-cache-interceptors'
         gitUrl = 'https://github.com/pine/spring-cache-interceptors.git'
+        inceptionYear = '2019'
 
         // Dependencies
         junitVersion = '5.7.1'

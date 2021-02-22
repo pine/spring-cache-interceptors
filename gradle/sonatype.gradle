@@ -10,6 +10,7 @@ publishing {
                 name = project.name
                 description = project.description
                 url = rootProject.ext.websiteUrl
+                inceptionYear = rootProject.ext.inceptionYear
                 licenses {
                     license {
                         name = 'MIT License'
