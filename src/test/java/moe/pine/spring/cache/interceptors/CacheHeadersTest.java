@@ -2,6 +2,7 @@ package moe.pine.spring.cache.interceptors;
 
 
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpHeaders;
 
 import java.time.Clock;
 import java.time.ZoneId;
@@ -10,6 +11,8 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.mockito.Mockito.mock;
 
 
 public class CacheHeadersTest {
@@ -103,6 +106,34 @@ public class CacheHeadersTest {
         assertEquals(
                 Optional.empty(),
                 CacheHeaders.EXPIRES.buildValue(cachePolicy, CLOCK));
+    }
+
+    @Test
+    void equalsTest() {
+        CacheHeader cacheHeader =
+                new CacheHeaders.CacheHeaderImpl(
+                        HttpHeaders.CACHE_CONTROL,
+                        mock(CacheHeaders.CacheHeaderValueBuilder.class));
+
+        assertEquals(CacheHeaders.CACHE_CONTROL, CacheHeaders.CACHE_CONTROL);
+        assertEquals(CacheHeaders.CACHE_CONTROL, cacheHeader);
+
+        assertNotEquals(CacheHeaders.CACHE_CONTROL, CacheHeaders.PRAGMA);
+        assertNotEquals(CacheHeaders.CACHE_CONTROL, CacheHeaders.EXPIRES);
+    }
+
+    @Test
+    void hashCodeTest() {
+        CacheHeader cacheHeader =
+                new CacheHeaders.CacheHeaderImpl(
+                        HttpHeaders.CACHE_CONTROL,
+                        mock(CacheHeaders.CacheHeaderValueBuilder.class));
+
+        assertEquals(CacheHeaders.CACHE_CONTROL.hashCode(), CacheHeaders.CACHE_CONTROL.hashCode());
+        assertEquals(CacheHeaders.CACHE_CONTROL.hashCode(), cacheHeader.hashCode());
+
+        assertNotEquals(CacheHeaders.CACHE_CONTROL.hashCode(), CacheHeaders.PRAGMA.hashCode());
+        assertNotEquals(CacheHeaders.CACHE_CONTROL.hashCode(), CacheHeaders.EXPIRES.hashCode());
     }
 
     @Test

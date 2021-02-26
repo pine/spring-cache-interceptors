@@ -9,6 +9,7 @@ import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Optional;
 
 public final class CacheHeaders {
@@ -63,6 +64,19 @@ public final class CacheHeaders {
                 return Optional.empty();
             }
             return Optional.of(value);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            final CacheHeaderImpl that = (CacheHeaderImpl) o;
+            return name.equals(that.name);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(name);
         }
 
         @Override
