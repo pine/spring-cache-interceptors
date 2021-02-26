@@ -3,6 +3,7 @@ package moe.pine.spring.cache.interceptors;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class CachePolicyTest {
     @Test
@@ -28,13 +29,54 @@ class CachePolicyTest {
     }
 
     @Test
+    void maxStale_hashCode_equals() {
+        CachePolicy.MaxStale maxStale1 = new CachePolicy.MaxStale(12345L);
+        CachePolicy.MaxStale maxStale2 = new CachePolicy.MaxStale(12345L);
+
+        assertEquals(maxStale1.hashCode(), maxStale1.hashCode());
+        assertEquals(maxStale1.hashCode(), maxStale2.hashCode());
+    }
+
+    @Test
+    void maxStale_hashCode_null() {
+        assertEquals(CachePolicy.MaxStale.ENABLED.hashCode(), CachePolicy.MaxStale.ENABLED.hashCode());
+    }
+
+    @Test
+    void maxStale_hashCode_notEquals() {
+        CachePolicy.MaxStale maxStale1 = new CachePolicy.MaxStale(12345L);
+        CachePolicy.MaxStale maxStale2 = new CachePolicy.MaxStale(12346L);
+
+        assertNotEquals(maxStale1.hashCode(), maxStale2.hashCode());
+    }
+
+    @Test
+    void maxStale_equalsTest_equals() {
+        CachePolicy.MaxStale maxStale1 = new CachePolicy.MaxStale(12345L);
+        CachePolicy.MaxStale maxStale2 = new CachePolicy.MaxStale(12345L);
+
+        assertEquals(maxStale1, maxStale1);
+        assertEquals(maxStale1, maxStale2);
+        assertEquals(CachePolicy.MaxStale.ENABLED, CachePolicy.MaxStale.ENABLED);
+    }
+
+    @Test
+    void maxStale_equalsTest_notEquals() {
+        CachePolicy.MaxStale maxStale1 = new CachePolicy.MaxStale(12345L);
+        CachePolicy.MaxStale maxStale2 = new CachePolicy.MaxStale(12346L);
+
+        assertNotEquals(maxStale1, maxStale2);
+        assertNotEquals(maxStale1, CachePolicy.MaxStale.ENABLED);
+    }
+
+    @Test
     void maxStale_toStringTest() {
         CachePolicy.MaxStale maxStale = new CachePolicy.MaxStale(12345L);
         assertEquals("MaxStale{seconds=12345}", maxStale.toString());
     }
 
     @Test
-    void maxStale_toStringTest_enabled() {
+    void maxStale_toStringTest_null() {
         assertEquals("MaxStale{seconds=null}", CachePolicy.MaxStale.ENABLED.toString());
     }
 }

@@ -2,6 +2,8 @@ package moe.pine.spring.cache.interceptors;
 
 import org.springframework.lang.Nullable;
 
+import java.util.Objects;
+
 public class CachePolicy {
     private boolean public_;
     private boolean private_;
@@ -194,6 +196,19 @@ public class CachePolicy {
         @Nullable
         public Long getSeconds() {
             return seconds;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            MaxStale maxStale = (MaxStale) o;
+            return Objects.equals(seconds, maxStale.seconds);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(seconds);
         }
 
         @Override
