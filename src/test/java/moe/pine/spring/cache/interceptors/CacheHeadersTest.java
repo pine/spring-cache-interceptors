@@ -104,4 +104,11 @@ public class CacheHeadersTest {
                 Optional.empty(),
                 CacheHeaders.EXPIRES.buildValue(cachePolicy, CLOCK));
     }
+
+    @Test
+    void toStringTest() {
+        assertEquals("CacheHeader{name='Cache-Control'}", CacheHeaders.CACHE_CONTROL.toString());
+        assertEquals("CacheHeader{name='Pragma'}", CacheHeaders.PRAGMA.toString());
+        assertEquals("CacheHeader{name='Expires'}", CacheHeaders.EXPIRES.toString());
+    }
 }

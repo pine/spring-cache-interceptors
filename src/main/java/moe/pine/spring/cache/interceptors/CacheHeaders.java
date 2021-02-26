@@ -64,6 +64,13 @@ public final class CacheHeaders {
             }
             return Optional.of(value);
         }
+
+        @Override
+        public String toString() {
+            return "CacheHeader{" +
+                    "name='" + name + '\'' +
+                    '}';
+        }
     }
 
     // -------------------------------------------------------------------
