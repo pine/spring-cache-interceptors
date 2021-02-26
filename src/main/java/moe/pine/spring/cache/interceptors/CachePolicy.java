@@ -158,6 +158,27 @@ public class CachePolicy {
         this.noTransform = noTransform;
     }
 
+    @Override
+    public String toString() {
+        return "CachePolicy{" +
+                "public=" + public_ +
+                ", private=" + private_ +
+                ", noCache=" + noCache +
+                ", onlyIfCached=" + onlyIfCached +
+                ", maxAge=" + maxAge +
+                ", sMaxAge=" + sMaxAge +
+                ", maxStale=" + maxStale +
+                ", minFresh=" + minFresh +
+                ", staleWhileRevalidate=" + staleWhileRevalidate +
+                ", staleIfError=" + staleIfError +
+                ", mustRevalidate=" + mustRevalidate +
+                ", proxyRevalidate=" + proxyRevalidate +
+                ", immutable=" + immutable +
+                ", noStore=" + noStore +
+                ", noTransform=" + noTransform +
+                '}';
+    }
+
     // -------------------------------------------------------------------
 
     public static class MaxStale {
