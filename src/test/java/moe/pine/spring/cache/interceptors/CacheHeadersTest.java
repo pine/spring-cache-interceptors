@@ -109,7 +109,7 @@ public class CacheHeadersTest {
     }
 
     @Test
-    void equalsTest() {
+    void equalsTest_equals() {
         CacheHeader cacheHeader =
                 new CacheHeaders.CacheHeaderImpl(
                         HttpHeaders.CACHE_CONTROL,
@@ -117,13 +117,16 @@ public class CacheHeadersTest {
 
         assertEquals(CacheHeaders.CACHE_CONTROL, CacheHeaders.CACHE_CONTROL);
         assertEquals(CacheHeaders.CACHE_CONTROL, cacheHeader);
+    }
 
+    @Test
+    void equalsTest_notEquals() {
         assertNotEquals(CacheHeaders.CACHE_CONTROL, CacheHeaders.PRAGMA);
         assertNotEquals(CacheHeaders.CACHE_CONTROL, CacheHeaders.EXPIRES);
     }
 
     @Test
-    void hashCodeTest() {
+    void hashCodeTest_equals() {
         CacheHeader cacheHeader =
                 new CacheHeaders.CacheHeaderImpl(
                         HttpHeaders.CACHE_CONTROL,
@@ -131,7 +134,10 @@ public class CacheHeadersTest {
 
         assertEquals(CacheHeaders.CACHE_CONTROL.hashCode(), CacheHeaders.CACHE_CONTROL.hashCode());
         assertEquals(CacheHeaders.CACHE_CONTROL.hashCode(), cacheHeader.hashCode());
+    }
 
+    @Test
+    void hashCodeTest_notEquals() {
         assertNotEquals(CacheHeaders.CACHE_CONTROL.hashCode(), CacheHeaders.PRAGMA.hashCode());
         assertNotEquals(CacheHeaders.CACHE_CONTROL.hashCode(), CacheHeaders.EXPIRES.hashCode());
     }
