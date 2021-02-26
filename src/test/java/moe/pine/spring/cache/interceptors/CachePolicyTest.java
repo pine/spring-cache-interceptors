@@ -14,7 +14,7 @@ class CachePolicyTest {
         cachePolicy.setOnlyIfCached(true);
         cachePolicy.setMaxAge(12345L);
         cachePolicy.setSMaxAge(23456L);
-        cachePolicy.setMaxStale(CachePolicy.MaxStale.of(34567L));
+        cachePolicy.setMaxStale(new CachePolicy.MaxStale(34567L));
         cachePolicy.setMinFresh(45678L);
         cachePolicy.setStaleWhileRevalidate(5L);
         cachePolicy.setStaleIfError(6L);

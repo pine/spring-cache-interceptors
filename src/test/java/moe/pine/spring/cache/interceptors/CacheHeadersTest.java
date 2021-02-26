@@ -58,7 +58,7 @@ public class CacheHeadersTest {
     @Test
     public void cacheControlTest_maxStale() {
         final CachePolicy cachePolicy = new CachePolicyBuilder()
-                .maxStale(CachePolicy.MaxStale.of(12345L))
+                .maxStale(new CachePolicy.MaxStale(12345L))
                 .build();
         assertEquals(
                 Optional.of("max-stale=12345"),

@@ -187,11 +187,7 @@ public class CachePolicy {
         @Nullable
         private final Long seconds;
 
-        public static MaxStale of(long seconds) {
-            return new MaxStale(seconds);
-        }
-
-        MaxStale(@Nullable Long seconds) {
+        public MaxStale(@Nullable Long seconds) {
             this.seconds = seconds;
         }
 
