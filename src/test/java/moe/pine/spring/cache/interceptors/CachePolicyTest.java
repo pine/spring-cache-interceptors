@@ -67,6 +67,7 @@ class CachePolicyTest {
 
         assertNotEquals(maxStale1, maxStale2);
         assertNotEquals(maxStale1, CachePolicy.MaxStale.ENABLED);
+        assertNotEquals(maxStale1, null);
     }
 
     @Test
