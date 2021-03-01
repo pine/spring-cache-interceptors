@@ -135,6 +135,19 @@ public class CachePolicy {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        final CachePolicy that = (CachePolicy) o;
+        return public_ == that.public_ && private_ == that.private_ && noCache == that.noCache && onlyIfCached == that.onlyIfCached && mustRevalidate == that.mustRevalidate && proxyRevalidate == that.proxyRevalidate && immutable == that.immutable && noStore == that.noStore && noTransform == that.noTransform && Objects.equals(maxAge, that.maxAge) && Objects.equals(sMaxAge, that.sMaxAge) && Objects.equals(maxStale, that.maxStale) && Objects.equals(minFresh, that.minFresh) && Objects.equals(staleWhileRevalidate, that.staleWhileRevalidate) && Objects.equals(staleIfError, that.staleIfError);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(public_, private_, noCache, onlyIfCached, maxAge, sMaxAge, maxStale, minFresh, staleWhileRevalidate, staleIfError, mustRevalidate, proxyRevalidate, immutable, noStore, noTransform);
+    }
+
+    @Override
     public String toString() {
         return "CachePolicy{" +
                 "public=" + public_ +

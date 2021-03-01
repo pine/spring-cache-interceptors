@@ -7,6 +7,169 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class CachePolicyTest {
     @Test
+    void equalsTest_equals() {
+        CachePolicy cachePolicy1 = new CachePolicy(
+                true,
+                true,
+                true,
+                true,
+                1L,
+                2L,
+                new CachePolicy.MaxStale(3L),
+                4L,
+                5L,
+                6L,
+                true,
+                true,
+                true,
+                true,
+                true
+        );
+        CachePolicy cachePolicy2 = new CachePolicy(
+                true,
+                true,
+                true,
+                true,
+                1L,
+                2L,
+                new CachePolicy.MaxStale(3L),
+                4L,
+                5L,
+                6L,
+                true,
+                true,
+                true,
+                true,
+                true
+        );
+
+        assertEquals(cachePolicy1, cachePolicy1);
+        assertEquals(cachePolicy1, cachePolicy2);
+    }
+
+    @Test
+    void equalsTest_notEquals() {
+        CachePolicy cachePolicy1 = new CachePolicy(
+                true,
+                true,
+                true,
+                true,
+                1L,
+                2L,
+                new CachePolicy.MaxStale(3L),
+                4L,
+                5L,
+                6L,
+                true,
+                true,
+                true,
+                true,
+                true
+        );
+        CachePolicy cachePolicy2 = new CachePolicy(
+                true,
+                true,
+                true,
+                true,
+                1L,
+                2L,
+                new CachePolicy.MaxStale(3L),
+                4L,
+                5L,
+                6L,
+                true,
+                true,
+                true,
+                true,
+                false
+        );
+
+        assertNotEquals(cachePolicy1, null);
+        assertNotEquals(cachePolicy1, cachePolicy2);
+    }
+
+    @Test
+    void hashCodeTest_equals() {
+        CachePolicy cachePolicy1 = new CachePolicy(
+                true,
+                true,
+                true,
+                true,
+                1L,
+                2L,
+                new CachePolicy.MaxStale(3L),
+                4L,
+                5L,
+                6L,
+                true,
+                true,
+                true,
+                true,
+                true
+        );
+        CachePolicy cachePolicy2 = new CachePolicy(
+                true,
+                true,
+                true,
+                true,
+                1L,
+                2L,
+                new CachePolicy.MaxStale(3L),
+                4L,
+                5L,
+                6L,
+                true,
+                true,
+                true,
+                true,
+                true
+        );
+
+        assertEquals(cachePolicy1.hashCode(), cachePolicy1.hashCode());
+        assertEquals(cachePolicy1.hashCode(), cachePolicy2.hashCode());
+    }
+
+    @Test
+    void hashCodeTest_notEquals() {
+        CachePolicy cachePolicy1 = new CachePolicy(
+                true,
+                true,
+                true,
+                true,
+                1L,
+                2L,
+                new CachePolicy.MaxStale(3L),
+                4L,
+                5L,
+                6L,
+                true,
+                true,
+                true,
+                true,
+                true
+        );
+        CachePolicy cachePolicy2 = new CachePolicy(
+                true,
+                true,
+                true,
+                true,
+                1L,
+                2L,
+                new CachePolicy.MaxStale(3L),
+                4L,
+                5L,
+                6L,
+                true,
+                true,
+                true,
+                true,
+                false
+        );
+
+        assertNotEquals(cachePolicy1.hashCode(), cachePolicy2.hashCode());
+    }
+
+    @Test
     void toStringTest() {
         CachePolicy cachePolicy = new CachePolicy(
                 true,
