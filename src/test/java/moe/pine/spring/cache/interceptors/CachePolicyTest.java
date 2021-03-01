@@ -8,24 +8,25 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 class CachePolicyTest {
     @Test
     void toStringTest() {
-        CachePolicy cachePolicy = new CachePolicy();
-        cachePolicy.setPublic(true);
-        cachePolicy.setPrivate(true);
-        cachePolicy.setNoCache(true);
-        cachePolicy.setOnlyIfCached(true);
-        cachePolicy.setMaxAge(12345L);
-        cachePolicy.setSMaxAge(23456L);
-        cachePolicy.setMaxStale(new CachePolicy.MaxStale(34567L));
-        cachePolicy.setMinFresh(45678L);
-        cachePolicy.setStaleWhileRevalidate(5L);
-        cachePolicy.setStaleIfError(6L);
-        cachePolicy.setMustRevalidate(true);
-        cachePolicy.setProxyRevalidate(true);
-        cachePolicy.setImmutable(true);
-        cachePolicy.setNoStore(true);
-        cachePolicy.setNoTransform(true);
+        CachePolicy cachePolicy = new CachePolicy(
+                true,
+                true,
+                true,
+                true,
+                1L,
+                2L,
+                new CachePolicy.MaxStale(3L),
+                4L,
+                5L,
+                6L,
+                true,
+                true,
+                true,
+                true,
+                true
+        );
 
-        assertEquals("CachePolicy{public=true, private=true, noCache=true, onlyIfCached=true, maxAge=12345, sMaxAge=23456, maxStale=MaxStale{seconds=34567}, minFresh=45678, staleWhileRevalidate=5, staleIfError=6, mustRevalidate=true, proxyRevalidate=true, immutable=true, noStore=true, noTransform=true}", cachePolicy.toString());
+        assertEquals("CachePolicy{public=true, private=true, noCache=true, onlyIfCached=true, maxAge=1, sMaxAge=2, maxStale=MaxStale{seconds=3}, minFresh=4, staleWhileRevalidate=5, staleIfError=6, mustRevalidate=true, proxyRevalidate=true, immutable=true, noStore=true, noTransform=true}", cachePolicy.toString());
     }
 
     @Test

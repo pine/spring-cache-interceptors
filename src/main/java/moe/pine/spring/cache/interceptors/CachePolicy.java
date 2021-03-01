@@ -5,65 +5,83 @@ import org.springframework.lang.Nullable;
 import java.util.Objects;
 
 public class CachePolicy {
-    private boolean public_;
-    private boolean private_;
-    private boolean noCache;
-    private boolean onlyIfCached;
+    private final boolean public_;
+    private final boolean private_;
+    private final boolean noCache;
+    private final boolean onlyIfCached;
 
     @Nullable
-    private Long maxAge;
+    private final Long maxAge;
 
     @Nullable
-    private Long sMaxAge;
+    private final Long sMaxAge;
 
     @Nullable
-    private MaxStale maxStale;
+    private final MaxStale maxStale;
 
     @Nullable
-    private Long minFresh;
+    private final Long minFresh;
 
     @Nullable
-    private Long staleWhileRevalidate;
+    private final Long staleWhileRevalidate;
 
     @Nullable
-    private Long staleIfError;
+    private final Long staleIfError;
 
-    private boolean mustRevalidate;
-    private boolean proxyRevalidate;
-    private boolean immutable;
-    private boolean noStore;
-    private boolean noTransform;
+    private final boolean mustRevalidate;
+    private final boolean proxyRevalidate;
+    private final boolean immutable;
+    private final boolean noStore;
+    private final boolean noTransform;
+
+    public CachePolicy(
+            boolean public_,
+            boolean private_,
+            boolean noCache,
+            boolean onlyIfCached,
+            @Nullable Long maxAge,
+            @Nullable Long sMaxAge,
+            @Nullable MaxStale maxStale,
+            @Nullable Long minFresh,
+            @Nullable Long staleWhileRevalidate,
+            @Nullable Long staleIfError,
+            boolean mustRevalidate,
+            boolean proxyRevalidate,
+            boolean immutable,
+            boolean noStore,
+            boolean noTransform
+    ) {
+        this.public_ = public_;
+        this.private_ = private_;
+        this.noCache = noCache;
+        this.onlyIfCached = onlyIfCached;
+        this.maxAge = maxAge;
+        this.sMaxAge = sMaxAge;
+        this.maxStale = maxStale;
+        this.minFresh = minFresh;
+        this.staleWhileRevalidate = staleWhileRevalidate;
+        this.staleIfError = staleIfError;
+        this.mustRevalidate = mustRevalidate;
+        this.proxyRevalidate = proxyRevalidate;
+        this.immutable = immutable;
+        this.noStore = noStore;
+        this.noTransform = noTransform;
+    }
 
     public boolean isPublic() {
         return public_;
-    }
-
-    public void setPublic(boolean public_) {
-        this.public_ = public_;
     }
 
     public boolean isPrivate() {
         return private_;
     }
 
-    public void setPrivate(boolean private_) {
-        this.private_ = private_;
-    }
-
     public boolean isNoCache() {
         return noCache;
     }
 
-    public void setNoCache(boolean noCache) {
-        this.noCache = noCache;
-    }
-
     public boolean isOnlyIfCached() {
         return onlyIfCached;
-    }
-
-    public void setOnlyIfCached(boolean onlyIfCached) {
-        this.onlyIfCached = onlyIfCached;
     }
 
     @Nullable
@@ -71,17 +89,9 @@ public class CachePolicy {
         return maxAge;
     }
 
-    public void setMaxAge(@Nullable Long maxAge) {
-        this.maxAge = maxAge;
-    }
-
     @Nullable
     public Long getSMaxAge() {
         return sMaxAge;
-    }
-
-    public void setSMaxAge(@Nullable Long sMaxAge) {
-        this.sMaxAge = sMaxAge;
     }
 
     @Nullable
@@ -89,17 +99,9 @@ public class CachePolicy {
         return maxStale;
     }
 
-    public void setMaxStale(@Nullable MaxStale maxStale) {
-        this.maxStale = maxStale;
-    }
-
     @Nullable
     public Long getMinFresh() {
         return minFresh;
-    }
-
-    public void setMinFresh(@Nullable Long minFresh) {
-        this.minFresh = minFresh;
     }
 
     @Nullable
@@ -107,57 +109,29 @@ public class CachePolicy {
         return staleWhileRevalidate;
     }
 
-    public void setStaleWhileRevalidate(@Nullable Long staleWhileRevalidate) {
-        this.staleWhileRevalidate = staleWhileRevalidate;
-    }
-
     @Nullable
     public Long getStaleIfError() {
         return staleIfError;
-    }
-
-    public void setStaleIfError(@Nullable Long staleIfError) {
-        this.staleIfError = staleIfError;
     }
 
     public boolean isMustRevalidate() {
         return mustRevalidate;
     }
 
-    public void setMustRevalidate(boolean mustRevalidate) {
-        this.mustRevalidate = mustRevalidate;
-    }
-
     public boolean isProxyRevalidate() {
         return proxyRevalidate;
-    }
-
-    public void setProxyRevalidate(boolean proxyRevalidate) {
-        this.proxyRevalidate = proxyRevalidate;
     }
 
     public boolean isImmutable() {
         return immutable;
     }
 
-    public void setImmutable(boolean immutable) {
-        this.immutable = immutable;
-    }
-
     public boolean isNoStore() {
         return noStore;
     }
 
-    public void setNoStore(boolean noStore) {
-        this.noStore = noStore;
-    }
-
     public boolean isNoTransform() {
         return noTransform;
-    }
-
-    public void setNoTransform(boolean noTransform) {
-        this.noTransform = noTransform;
     }
 
     @Override
