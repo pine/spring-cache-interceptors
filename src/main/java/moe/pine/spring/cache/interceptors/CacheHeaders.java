@@ -51,10 +51,12 @@ public final class CacheHeaders {
             this.valueBuilder = valueBuilder;
         }
 
+        @Override
         public String getName() {
             return name;
         }
 
+        @Override
         public Optional<String> buildValue(
                 final CachePolicy cachePolicy,
                 final Clock clock
