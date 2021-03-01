@@ -54,13 +54,13 @@ public class CacheInterceptor implements HandlerInterceptor {
             HttpServletResponse response,
             Object handler
     ) {
-        for (final CacheHeader cacheHeader : cacheHeaders) {
+        for (final CacheHeader cacheHeader : getCacheHeaders()) {
             final String name = cacheHeader.getName();
             if (!StringUtils.hasLength(name)) {
                 continue;
             }
 
-            final Optional<String> valueOpt = cacheHeader.buildValue(cachePolicy, clock);
+            final Optional<String> valueOpt = cacheHeader.buildValue(getCachePolicy(), getClock());
             valueOpt.ifPresent(value -> response.addHeader(name, value));
         }
 
