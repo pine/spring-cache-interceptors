@@ -31,7 +31,7 @@ repositories {
 }
 
 depepdencies {
-    implementation 'moe.pine:spring-cache-interceptors:0.1.2'
+    implementation "moe.pine:spring-cache-interceptors:$latestVersion"
 }
 ```
 
