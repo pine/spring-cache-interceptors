@@ -17,10 +17,10 @@
 
 ### Supported Spring Framework versions
 
-|Spring Framework versions|Spring Boot versions|The library version|
-|-------------------------|--------------------|-------------------|
-|5.3                      |2.4, 2.5            |0.2.0              |
-|5.2                      |2.2, 2.3            |0.1.3              |
+|Spring Framework versions|Spring Boot versions|This library version|
+|-------------------------|--------------------|--------------------|
+|5.3                      |2.4, 2.5            |0.2.0               |
+|5.2                      |2.2, 2.3            |0.1.3               |
 
 ## Getting started
 The library is published to jcenter.
