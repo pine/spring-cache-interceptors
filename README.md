@@ -23,7 +23,7 @@
 |5.2                      |2.2, 2.3            |0.1.3               |
 
 ## Getting started
-The library is published to jcenter.
+The library is published to Maven Central.
 
 ```gradle
 repositories {
