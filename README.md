@@ -3,7 +3,7 @@
 [![codecov](https://codecov.io/gh/pine/spring-cache-interceptors/branch/master/graph/badge.svg)](https://codecov.io/gh/pine/spring-cache-interceptors)
 [![Maven Central](https://img.shields.io/maven-central/v/moe.pine/spring-cache-interceptors)](https://search.maven.org/artifact/moe.pine/spring-cache-interceptors)
 
-:leaves: Cache interceptors for SpringFramework
+:herb: Cache interceptors for SpringFramework
 
 ![](images/resized.jpg)<br>
 <sup><sup>&copy; Pongnathee Kluaythong/123RF.COM</sup></sup>
