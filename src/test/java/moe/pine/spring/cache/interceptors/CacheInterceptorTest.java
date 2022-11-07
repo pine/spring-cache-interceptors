@@ -53,7 +53,7 @@ public class CacheInterceptorTest {
     public void constructorTest_1() {
         final CacheInterceptor cacheInterceptor = new CacheInterceptor(cachePolicy);
         assertSame(cachePolicy, cacheInterceptor.getCachePolicy());
-        assertSame(CacheInterceptor.DEFAULT_HEADERS, cacheInterceptor.getCacheHeaders());
+        assertEquals(CacheInterceptor.DEFAULT_HEADERS, cacheInterceptor.getCacheHeaders());
         assertNotNull(cacheInterceptor.getClock());
     }
 
@@ -66,7 +66,7 @@ public class CacheInterceptorTest {
                         CacheHeaders.EXPIRES);
         final CacheInterceptor cacheInterceptor = new CacheInterceptor(cachePolicy, headers);
         assertSame(cachePolicy, cacheInterceptor.getCachePolicy());
-        assertSame(headers, cacheInterceptor.getCacheHeaders());
+        assertEquals(headers, cacheInterceptor.getCacheHeaders());
         assertNotNull(cacheInterceptor.getClock());
     }
 
@@ -79,7 +79,7 @@ public class CacheInterceptorTest {
                         CacheHeaders.EXPIRES);
         final CacheInterceptor cacheInterceptor = new CacheInterceptor(cachePolicy, headers, clock);
         assertSame(cachePolicy, cacheInterceptor.getCachePolicy());
-        assertSame(headers, cacheInterceptor.getCacheHeaders());
+        assertEquals(headers, cacheInterceptor.getCacheHeaders());
         assertSame(clock, cacheInterceptor.getClock());
     }
 

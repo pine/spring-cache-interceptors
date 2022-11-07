@@ -6,6 +6,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.time.Clock;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -43,8 +44,11 @@ public class CacheInterceptor implements HandlerInterceptor {
             final List<CacheHeader> cacheHeaders,
             final Clock clock
     ) {
+        final List<CacheHeader> unmodifiableCacheHeaders =
+                Collections.unmodifiableList(new ArrayList<>(cacheHeaders));
+
         this.cachePolicy = cachePolicy;
-        this.cacheHeaders = cacheHeaders;
+        this.cacheHeaders = unmodifiableCacheHeaders;
         this.clock = clock;
     }
 
