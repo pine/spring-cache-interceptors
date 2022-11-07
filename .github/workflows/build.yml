@@ -4,7 +4,7 @@ on:
   - pull_request
 jobs:
   build:
-    name: java v${{ matrix.java-version }}
+    name: java ${{ matrix.java-version }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
