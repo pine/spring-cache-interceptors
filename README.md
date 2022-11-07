@@ -1,5 +1,5 @@
 # spring-cache-interceptors
-[![Build Status](https://travis-ci.com/pine/spring-cache-interceptors.svg?branch=master)](https://travis-ci.com/pine/spring-cache-interceptors)
+[![build](https://github.com/pine/spring-cache-interceptors/actions/workflows/build.yml/badge.svg)](https://github.com/pine/spring-cache-interceptors/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/pine/spring-cache-interceptors/branch/master/graph/badge.svg)](https://codecov.io/gh/pine/spring-cache-interceptors)
 [![Maven Central](https://img.shields.io/maven-central/v/moe.pine/spring-cache-interceptors)](https://search.maven.org/artifact/moe.pine/spring-cache-interceptors)
 
