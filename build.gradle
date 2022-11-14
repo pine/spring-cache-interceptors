@@ -106,7 +106,7 @@ apply plugin: 'com.github.spotbugs'
 
 spotbugs {
     toolVersion = '4.7.3'
-    excludeFilter = file("${project.rootDir}/findbugs-exclude.xml")
+    excludeFilter = file("${project.rootDir}/config/spotbugs-exclude-filter.xml")
     spotbugsTest.enabled = false
 }
 
